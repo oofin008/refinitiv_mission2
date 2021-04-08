@@ -1,4 +1,4 @@
-import {QAmockData} from './QAmockData';
+import {QAmockData, AnswermockData} from './QAmockData';
 import * as QATypes from './QATypes';
 
 async function getQuestion (req:any, res:any) {
@@ -10,7 +10,7 @@ async function getQuestion (req:any, res:any) {
 
 async function getAnswer (req:any, res:any) {
   const { id='' } = req.params;
-  const resData = searchAnswer(id, QAmockData);
+  const resData = searchAnswer(id, AnswermockData);
 
   if( resData === undefined) {
     return res.status(500).json({
@@ -25,8 +25,8 @@ async function getAnswer (req:any, res:any) {
   })
 }
 
-function searchAnswer (id: string, QAmockData: QATypes.QuestionAnswerObjectType[]) {
-  return QAmockData.find(val => val.id === id);
+function searchAnswer (id: string, QAmockData: QATypes.AnswerObjectType[]) {
+  return QAmockData.find((val: QATypes.AnswerObjectType) => val.id === id);
 }
 
 export {
