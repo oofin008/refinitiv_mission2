@@ -16,6 +16,12 @@ app.use(function (req, res, next) {
   next()
 })
 
+//logger
+app.use(function (req, res, next) {
+  console.log('== request from ==', req.headers['x-forwarded-for'] || req.connection.remoteAddress);
+  next()
+})
+
 app.route('/').get((req, res) => {
   res.status(200).json({message: 'hello world'});
 })
