@@ -20,13 +20,7 @@ app.use( (req: Request, res: Response, next: NextFunction): void => {
 // Init route
 index(app);
 
-app.use( (req: Request, res: Response, next: NextFunction): void => {
-  res.status(404).json({
-    success: false,
-    message: "path not found"
-  });
-});
-
+// Error handler
 app.use((error: Errback, req: Request, res: Response, next: NextFunction): void => {
   if(!error) {
     next();
@@ -36,6 +30,14 @@ app.use((error: Errback, req: Request, res: Response, next: NextFunction): void 
       message: "Internal error, something went wrong"
     });
   }
+});
+
+// Path not found handler
+app.use( (req: Request, res: Response, next: NextFunction): void => {
+  res.status(404).json({
+    success: false,
+    message: "path not found"
+  });
 });
 
 export default app;
