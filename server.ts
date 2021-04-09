@@ -2,7 +2,7 @@ import express from 'express';
 import index from './app/index';
 const app = express();
 
-app.use(function (req, res, next) {
+app.use( (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   res.setHeader(
@@ -12,12 +12,11 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Expose-Headers', 'x-suggested-filename');
   res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Authorization', 'Bearer {cbe913af6254f300a338d5f5ffd6f66b}');
   next();
 });
 
 //logger
-app.use(function (req, res, next) {
+app.use( (req, res, next) => {
   console.log('== request from ==', req.headers['x-forwarded-for'] || req.connection.remoteAddress);
   next();
 });
