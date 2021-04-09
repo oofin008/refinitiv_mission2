@@ -5,12 +5,7 @@ const app: Application = express();
 // Set headers
 app.use( (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, access_token'
-  );
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Access-Control-Expose-Headers', 'x-suggested-filename');
   res.setHeader('Content-Type', 'application/json');
   next();
