@@ -1,8 +1,9 @@
-import express from 'express';
+import express, { Application, Request, Response, NextFunction} from 'express';
 import index from './app/index';
-const app = express();
+const app: Application = express();
 
-app.use( (req, res, next) => {
+// Set headers
+app.use( (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   res.setHeader(
@@ -15,18 +16,15 @@ app.use( (req, res, next) => {
   next();
 });
 
-//logger
-app.use( (req, res, next) => {
+// Logger
+app.use( (req: Request, res: Response, next: NextFunction) => {
   console.log('== request from ==', req.headers['x-forwarded-for'] || req.connection.remoteAddress);
   next();
 });
 
-app.route('/').get((req, res) => {
-  res.status(200).json({message: 'hello world'});
-});
-
+// Init route
 index(app);
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => console.log(`App listen on PORT: ${port}`));
+// Get port and start server
+const port: string|number = process.env.PORT || 3000;
+app.listen(port, ():void => console.log(`App listen on PORT: ${port}`));
