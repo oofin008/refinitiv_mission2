@@ -7,7 +7,7 @@ export const QAmockData:Types.QuestionAnswerObjectType[] = [
   { id: '4', question: 'question 4', answerId: '4'},
   { id: '5', question: 'question 5', answerId: '5'},
   { id: '6', question: 'question 6', answerId: '6'},
-]
+];
 
 export const AnswermockData: Types.AnswerObjectType[] = [
   { id: '0', answer: 'answer to question 0'},
@@ -17,4 +17,4 @@ export const AnswermockData: Types.AnswerObjectType[] = [
   { id: '4', answer: 'answer to question 4'},
   { id: '5', answer: 'answer to question 5'},
   { id: '6', answer: 'answer to question 6'},
-]
+];
