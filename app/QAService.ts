@@ -11,19 +11,22 @@ export const getQuestion = async (req: Request, res: Response): Promise<Response
 
 export const getAnswer = async (req: Request, res: Response): Promise<Response> => {
   const { id='' } = req.params;
-  const resData = searchAnswer(id, AnswermockData);
 
-  if( resData === undefined) {
+  try {
+    const resData = searchAnswer(id, AnswermockData);
+    if( resData === undefined) {
+      throw "error, no question id";
+    }
+    return res.status(200).json({
+      success: true,
+      data: resData
+    });
+  } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "error, no question id"
+      message: error
     });
   }
-
-  return res.status(200).json({
-    success: true,
-    data: resData
-  });
 };
 
 const searchAnswer =  (id: string, QAmockData: QATypes.AnswerObjectType[]) => {

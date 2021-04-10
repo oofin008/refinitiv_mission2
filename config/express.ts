@@ -25,6 +25,7 @@ app.use((error: Errback, req: Request, res: Response, next: NextFunction): void 
   if(!error) {
     next();
   } else {
+    console.log(error);
     res.status(500).json({
       success: false,
       message: "Internal error, something went wrong"
