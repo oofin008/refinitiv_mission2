@@ -1,5 +1,6 @@
-import * as Types from './QATypes';
-export const QAmockData:Types.QuestionAnswerObjectType[] = [
+import {QuestionAnswerObjectType, AnswerObjectType} from './QATypes';
+
+export const QAmockData: QuestionAnswerObjectType[] = [
   { id: '0', question: 'question 0', answerId: '0'},
   { id: '1', question: 'question 1', answerId: '1'},
   { id: '2', question: 'question 2', answerId: '2'},
@@ -9,7 +10,7 @@ export const QAmockData:Types.QuestionAnswerObjectType[] = [
   { id: '6', question: 'question 6', answerId: '6'},
 ];
 
-export const AnswermockData: Types.AnswerObjectType[] = [
+export const AnswermockData: AnswerObjectType[] = [
   { id: '0', answer: 'answer to question 0'},
   { id: '1', answer: 'answer to question 1'},
   { id: '2', answer: 'answer to question 2'},
