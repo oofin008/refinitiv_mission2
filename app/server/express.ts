@@ -1,5 +1,5 @@
 import express, { Application, Request, Response, NextFunction, Errback} from 'express';
-import { AppRoute } from '../app/index';
+import { AppRoute } from '../index';
 const app: Application = express();
 
 // Set headers

@@ -1,4 +1,14 @@
-import app from './config/express';
+import express, { Application } from 'express';
+import {headerInit, logger, errorHandle, pathNotFound} from './app/server';
+import { AppRoute } from './app';
+
+const app: Application = express();
+
+headerInit(app);
+logger(app);
+AppRoute(app);
+errorHandle(app);
+pathNotFound(app);
 
 // Get port and start server
 const port: string|number = process.env.PORT || 3000;
