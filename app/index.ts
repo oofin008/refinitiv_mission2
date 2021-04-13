@@ -1,8 +1,8 @@
 import {Application} from 'express';
-import {getQuestion, getAnswer} from './QAService';
+import {getQuestionRoute, getAnswerRoute} from './QAService';
 
-export default (app:Application) => {
-  app.route('/getquestion').get(getQuestion);
-  app.route('/getanswer/:id').get(getAnswer);
+export const AppRoute = (app:Application) => {
+  app.route('/getquestion').get(getQuestionRoute);
+  app.route('/getanswer/:id').get(getAnswerRoute);
 };
 

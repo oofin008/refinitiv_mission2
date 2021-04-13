@@ -1,15 +1,19 @@
 import { Request, Response} from 'express';
-import {QAmockData, AnswermockData} from './QAmockData';
-import * as QATypes from './QATypes';
+import * as fs from 'fs';
+import * as path from 'path';
+import { QAmockData, AnswermockData } from './QAmockData';
+import { AnswerObjectType, QuestionAnswerObjectType } from './QATypes';
 
-export const getQuestion = async (req: Request, res: Response): Promise<Response> => {
+export const getQuestionRoute = async (req: Request, res: Response): Promise<Response> => {
+  console.log(__dirname);
+  getExternalQuestion();
   return res.status(200).json({
     success: true,
     data: QAmockData
   });
 };
 
-export const getAnswer = async (req: Request, res: Response): Promise<Response> => {
+export const getAnswerRoute = async (req: Request, res: Response): Promise<Response> => {
   const { id='' } = req.params;
 
   try {
@@ -29,6 +33,14 @@ export const getAnswer = async (req: Request, res: Response): Promise<Response> 
   }
 };
 
-const searchAnswer =  (id: string, QAmockData: QATypes.AnswerObjectType[]) => {
-  return QAmockData.find((val: QATypes.AnswerObjectType) => val.id === id);
+const searchAnswer =  (id: string, QAmockData: AnswerObjectType[]):AnswerObjectType | undefined => {
+  return QAmockData.find((val: AnswerObjectType) => val.id === id);
+};
+
+const getExternalQuestion = ():QuestionAnswerObjectType => {
+  const descPath = path.join(__dirname, '../data/question.json');
+  console.log('desc ', descPath);
+  const testReadFile = fs.readFileSync(descPath);
+  const parseData:QuestionAnswerObjectType = JSON.parse(testReadFile.toString());
+  return parseData;
 };
