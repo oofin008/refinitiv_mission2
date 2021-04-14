@@ -1,12 +1,12 @@
 import express, { Application } from 'express';
 import {headerInit, logger, errorHandle, pathNotFound} from './app/server';
-import { AppRoute } from './app';
+import { appRoute } from './app';
 
 const app: Application = express();
 
 headerInit(app);
 logger(app);
-AppRoute(app);
+appRoute(app);
 errorHandle(app);
 pathNotFound(app);
 
