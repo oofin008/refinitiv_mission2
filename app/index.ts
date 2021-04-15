@@ -1,5 +1,5 @@
 import {Application} from 'express';
-import {getQuestionRoute, getAnswerRoute} from './QAService';
+import { getQuestionRoute, getAnswerRoute } from './QAcontroller';
 
 export const appRoute = (app:Application) => {
   app.route('/getquestion').get(getQuestionRoute);

@@ -1,5 +1,5 @@
 import express, { Application, Request, Response, NextFunction, Errback} from 'express';
-import { AppRoute } from '../index';
+import { appRoute } from '../index';
 const app: Application = express();
 
 // Set headers
@@ -18,7 +18,7 @@ app.use( (req: Request, res: Response, next: NextFunction): void => {
 });
 
 // Init route
-AppRoute(app);
+appRoute(app);
 
 // Error handler
 app.use((error: Errback, req: Request, res: Response, next: NextFunction): void => {
