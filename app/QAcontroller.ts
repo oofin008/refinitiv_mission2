@@ -4,7 +4,7 @@ import { QuestionAnswerObjectType, AnswerObjectType } from './QATypes';
 
 export const getQuestionRoute = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const data: QuestionAnswerObjectType[] = getQuestionFile(); 
+    const data: QuestionAnswerObjectType[] = await getQuestionFile(); 
     return res.status(200).json({
       success: true,
       data
@@ -20,7 +20,7 @@ export const getQuestionRoute = async (req: Request, res: Response): Promise<Res
 export const getAnswerRoute = async (req: Request, res: Response): Promise<Response> => {
   const { id = '' } = req.params;
   try {
-    const data: AnswerObjectType | undefined = getAnswerFile(id);
+    const data: AnswerObjectType | undefined = await getAnswerFile(id);
     if (data === undefined) throw new Error("Error! No answer id found");
     return res.status(200).json({
       success: true,
@@ -29,7 +29,7 @@ export const getAnswerRoute = async (req: Request, res: Response): Promise<Respo
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: error.message || "Error! something went wrong"
+      message: "Error! something went wrong"
     });
   }
 };
