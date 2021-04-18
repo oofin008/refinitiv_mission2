@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { getQuestionFile, getAnswerFile } from './QAService';
+import { getQuestion, getAnswerById } from './QAService';
 import { QuestionAnswerObjectType, AnswerObjectType } from './QATypes';
 
-export const getQuestionRoute = async (req: Request, res: Response): Promise<Response> => {
+export const routerGetQuestion = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const data: QuestionAnswerObjectType[] = await getQuestionFile(); 
+    const data: QuestionAnswerObjectType[] = await getQuestion(); 
     return res.status(200).json({
       success: true,
       data
@@ -17,10 +17,10 @@ export const getQuestionRoute = async (req: Request, res: Response): Promise<Res
   }
 };
 
-export const getAnswerRoute = async (req: Request, res: Response): Promise<Response> => {
+export const routerGetAnswerById = async (req: Request, res: Response): Promise<Response> => {
   const { id = '' } = req.params;
   try {
-    const data: AnswerObjectType | undefined = await getAnswerFile(id);
+    const data: AnswerObjectType | undefined = await getAnswerById(id);
     if (data === undefined) throw new Error("Error! No answer id found");
     return res.status(200).json({
       success: true,

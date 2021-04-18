@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { AnswerObjectType, QuestionAnswerObjectType } from './QATypes';
 
-export const getQuestionFile = ():Promise<QuestionAnswerObjectType[]> => {
+export const getQuestion = ():Promise<QuestionAnswerObjectType[]> => {
   const descPath = path.join(__dirname, '../data/question.json');
   const promise: Promise<QuestionAnswerObjectType[]> = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -19,7 +19,7 @@ export const getQuestionFile = ():Promise<QuestionAnswerObjectType[]> => {
   return promise;
 };
 
-export const getAnswerFile = (id: string): Promise<AnswerObjectType | undefined> => {
+export const getAnswerById = (id: string): Promise<AnswerObjectType | undefined> => {
   const descPath = path.join(__dirname, '../data/answer.json');
   const promise: Promise<AnswerObjectType | undefined> = new Promise((resolve, reject) => {
     setTimeout(() => {

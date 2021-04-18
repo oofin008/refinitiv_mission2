@@ -1,9 +1,9 @@
 import {Application} from 'express';
-import { getQuestionRoute, getAnswerRoute } from './QAcontroller';
+import { routerGetQuestion, routerGetAnswerById } from './QAcontroller';
 
 export const appRoute = (app:Application): Application => {
-  app.route('/getquestion').get(getQuestionRoute);
-  app.route('/getanswer/:id').get(getAnswerRoute);
+  app.route('/getquestion').get(routerGetQuestion);
+  app.route('/getanswer/:id').get(routerGetAnswerById);
   return app;
 };
 
