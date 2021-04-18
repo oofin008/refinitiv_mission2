@@ -29,7 +29,7 @@ export const routerGetAnswerById = async (req: Request, res: Response): Promise<
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Error! something went wrong"
+      message: error.message || "Error! something went wrong"
     });
   }
 };
