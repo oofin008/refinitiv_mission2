@@ -1,6 +1,6 @@
 import {Application, Errback, Request, Response, NextFunction} from 'express';
 
-export const errorHandle = (app: Application):void => {
+export const errorHandle = (app: Application):Application => {
   app.use((error: Errback, req: Request, res: Response, next: NextFunction): void => {
     if(!error) {
       next();
@@ -11,4 +11,5 @@ export const errorHandle = (app: Application):void => {
       message: "Internal error, something went wrong"
     });
   });
+  return app;
 };

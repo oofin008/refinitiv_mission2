@@ -1,6 +1,6 @@
 import { Application, Request, Response, NextFunction } from 'express';
 
-export const headerInit = (app: Application): void => {
+export const headerInit = (app: Application): Application => {
   app.use( (req: Request, res: Response, next: NextFunction): void => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET');
@@ -8,4 +8,5 @@ export const headerInit = (app: Application): void => {
     res.setHeader('Content-Type', 'application/json');
     next();
   });
+  return app;
 };
